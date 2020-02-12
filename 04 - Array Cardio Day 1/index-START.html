@@ -38,16 +38,23 @@
       return false;
     };
     const filter = inventors.filter(invFilter);
-    console.log(filter);
+    // console.log(filter);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    const map = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+    // console.log(map);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const sort = inventors.sort((a, b) => {
+      return a.year - b.year;
+    });
+    // console.log(sort);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+
 
     // 5. Sort the inventors by years lived
 
@@ -61,6 +68,8 @@
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+
 
   </script>
 </body>
