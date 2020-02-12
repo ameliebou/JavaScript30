@@ -57,7 +57,9 @@
 
 
     // 5. Sort the inventors by years lived
-
+    const ageSort = inventors.sort((a, b) => {
+      return (a.passed - a.year) - (b.passed - b.year);
+    });
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
@@ -69,7 +71,16 @@
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    const sums = data.reduce((allWords, word) => {
+      if (word in allWords) {
+        allWords[word]++
+      } else {
+        allWords[word] = 1
+      }
+      return allWords;
+    }, {});
 
+    // console.log(sums);
 
   </script>
 </body>
