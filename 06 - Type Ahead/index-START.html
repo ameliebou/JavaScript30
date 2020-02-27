@@ -17,6 +17,9 @@
 <script>
   const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
+  const searchBar = document.querySelector('.search');
+  const suggestions = document.querySelector('.suggestions');
+
   const cities = [];
 
   fetch(endpoint)
@@ -30,24 +33,21 @@
     });
   };
 
-  // console.log(cities);
-  console.log(findMatches("Bos", cities));
+  function display(answers) {
+    suggestions.innerHTML = '';
+    answers.forEach((answer) => {
+      suggestions.insertAdjacentHTML('beforeend', `<li>${answer.city} - ${answer.state} <span class="population">${answer.population}</span></li>`);
+    });
+  };
 
-  // const searchBar = document.querySelector('.search');
+  const search = (event) => {
+    const input = searchBar.value;
+    const answers = findMatches(input, cities);
+    answers;
+    display(answers);
+  };
 
-  // const search = (event) => {
-  //   const input = searchBar.value;
-  //   const answers = [];
-  //   cities.forEach((item) => {
-  //     if (item.city === input) {
-  //       answers.push(item);
-  //     };
-  //   });
-  //   answers;
-  //   console.log(answers);
-  // };
-
-  // searchBar.addEventListener('keyup', search);
+  searchBar.addEventListener('keyup', search);
 
 </script>
 </body>
